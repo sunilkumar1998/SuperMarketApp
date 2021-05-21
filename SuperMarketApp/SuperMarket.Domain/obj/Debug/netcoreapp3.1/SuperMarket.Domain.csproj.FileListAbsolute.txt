@@ -1,0 +1,12 @@
+C:\Users\s s infotech\source\repos\SuperMarketApp\SuperMarket.Domain\bin\Debug\netcoreapp3.1\SuperMarket.Domain.deps.json
+C:\Users\s s infotech\source\repos\SuperMarketApp\SuperMarket.Domain\bin\Debug\netcoreapp3.1\SuperMarket.Domain.dll
+C:\Users\s s infotech\source\repos\SuperMarketApp\SuperMarket.Domain\bin\Debug\netcoreapp3.1\SuperMarket.Domain.pdb
+C:\Users\s s infotech\source\repos\SuperMarketApp\SuperMarket.Domain\obj\Debug\netcoreapp3.1\SuperMarket.Domain.csprojAssemblyReference.cache
+C:\Users\s s infotech\source\repos\SuperMarketApp\SuperMarket.Domain\obj\Debug\netcoreapp3.1\SuperMarket.Domain.AssemblyInfoInputs.cache
+C:\Users\s s infotech\source\repos\SuperMarketApp\SuperMarket.Domain\obj\Debug\netcoreapp3.1\SuperMarket.Domain.AssemblyInfo.cs
+C:\Users\s s infotech\source\repos\SuperMarketApp\SuperMarket.Domain\obj\Debug\netcoreapp3.1\SuperMarket.Domain.csproj.CoreCompileInputs.cache
+C:\Users\s s infotech\source\repos\SuperMarketApp\SuperMarket.Domain\obj\Debug\netcoreapp3.1\SuperMarket.Domain.dll
+C:\Users\s s infotech\source\repos\SuperMarketApp\SuperMarket.Domain\obj\Debug\netcoreapp3.1\SuperMarket.Domain.pdb
+C:\Users\s s infotech\source\repos\SuperMarketApp\SuperMarket.Domain\bin\Debug\netcoreapp3.1\SuperMarket.Domain.runtimeconfig.json
+C:\Users\s s infotech\source\repos\SuperMarketApp\SuperMarket.Domain\bin\Debug\netcoreapp3.1\SuperMarket.Domain.runtimeconfig.dev.json
+C:\Users\s s infotech\source\repos\SuperMarketApp\SuperMarket.Domain\obj\Debug\netcoreapp3.1\SuperMarket.Domain.genruntimeconfig.cache
