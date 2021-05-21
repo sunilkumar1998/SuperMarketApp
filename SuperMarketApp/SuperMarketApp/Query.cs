@@ -18,7 +18,7 @@ namespace SuperMarketApp
 			{
 				Console.WriteLine("\n\n\n1.  Query Staff using name or phone number or both");
 				Console.WriteLine("2.  Query Staff using their Role");
-				Console.WriteLine("3.  Query Product based on -\n\ta. Name\nb\tb.Category\n\tc.InStock, OutOfStock\n");
+				Console.WriteLine("3.  Query Product based on -\n\ta. Name\n\tb.Category\n\tc.InStock, OutOfStock\n");
 				Console.WriteLine("4.  Query product which are out of stock");
 				Console.WriteLine("5.  Number of Products within a category");
 				Console.WriteLine("6.  Product-Categories listed in descending with highest number of products to the lowest number of products");
@@ -27,7 +27,7 @@ namespace SuperMarketApp
 				Console.WriteLine("8.  List of Product with different suppliers");
 				Console.WriteLine("9.  Exit?");
 
-
+				Console.WriteLine("\nEnter the query Number: ");
 
 
 				int ch = Convert.ToInt32(Console.ReadLine());
@@ -99,7 +99,7 @@ namespace SuperMarketApp
 
 		public static void Filterstaff()
 		{
-			var staff = context.Staff.Where(s => s.firstname == "Swati" || s.phone== 9978882723).ToList();
+			var staff = context.Staff.Where(s => s.firstname.Contains("Swati") || s.phone== 9978882723).ToList();
 			Console.WriteLine("StaffId\t firstname\t lastname\t gender\t phone\t roleId\t addressId");
 			foreach (var v in staff)
 			{
@@ -126,7 +126,7 @@ namespace SuperMarketApp
 			var stf = (from p in context.Staff
 					   join e in context.Role
 					   on p.roleId equals e.RoleId
-					   where e.role == "Manager"
+					   where e.role.Contains("Manager")
 					   select new
 					   {
 						   ID = p.roleId,
@@ -143,8 +143,8 @@ namespace SuperMarketApp
 
 		public static void QueryProduct() 
 		{
-			Console.WriteLine("Based on Name : ");
-			var prod= context.Product.Where(s => s.ProductName == "frooti").ToList();
+			Console.WriteLine("\nBased on Name : ");
+			var prod= context.Product.Where(s => s.ProductName.Contains("frooti")).ToList();
 			Console.WriteLine(" productId\t name\t manufacturer \t C.P\t  S.P\t categoryId");
 			foreach (var p in prod)
 			{				
@@ -152,11 +152,11 @@ namespace SuperMarketApp
 					 + p.CostPrice + "\t" + p.SellingPrice + "\t" + p.CategoryId);
 			}
 
-			Console.WriteLine("Based on category : ");
+			Console.WriteLine("\nBased on category : ");
 			var prodc = (from p in context.Product
 						 join e in context.Category
 						 on p.CategoryId equals e.CategoryId
-						 where e.CategoryCode == "soap"
+						 where e.CategoryCode.Contains("soap")
 						 select new
 						 {
 							 p,e
@@ -170,7 +170,7 @@ namespace SuperMarketApp
 			}
 
 
-			Console.WriteLine("Based on Instock/Outstock : ");
+			Console.WriteLine("\nBased on Instock/Outstock : ");
 			var prodI = (from p in context.Product
 						 join e in context.Inventory
 						 on p.ProductId equals e.ProductId
@@ -188,7 +188,7 @@ namespace SuperMarketApp
 			}
 
 
-			Console.WriteLine("SP less than, greater than or between : ");
+			Console.WriteLine("\nSP less than, greater than or between : ");
 			var prodbySP = context.Product.Where(s => s.SellingPrice >10 && s.SellingPrice<60).ToList();
 			Console.WriteLine(" productId\t name\t manufacturer \t C.P\t  S.P\t categoryId");
 			foreach (var p in prodbySP)
@@ -202,11 +202,11 @@ namespace SuperMarketApp
 
 		public static void NumberOfProductPutofStock()
 		{
-			Console.WriteLine("Based on Product Out of stock : ");
+			Console.WriteLine("\nBased on Product Out of stock : ");
 			var prodI = (from p in context.Product
 						 join e in context.Inventory
 						 on p.ProductId equals e.ProductId
-						 where e.Quantity < 0
+						 where e.Quantity == 0
 						 select new
 						 {
 							 p,
@@ -266,9 +266,9 @@ namespace SuperMarketApp
 		
 		private static void Listsupplier()
 		{
-			Console.WriteLine("Based on name \n");
+			Console.WriteLine("\nBased on name \n");
 
-			var suppliernamefilter = context.Supplier.Where(s =>s.SupplierName== "Vitran Distributor").ToList();
+			var suppliernamefilter = context.Supplier.Where(s =>s.SupplierName.Contains("Vitran Distributor")).ToList();
 			Console.WriteLine(" Id\t name\t phone \t email\t  city");
 			foreach (var v in suppliernamefilter)
 			{
@@ -276,7 +276,7 @@ namespace SuperMarketApp
 					 + v.email + "\t" + v.city);
 			}
 
-			Console.WriteLine("Based on phone number\n ");
+			Console.WriteLine("\nBased on phone number\n ");
 
 			var supplierPhonefilter = context.Supplier.Where(s => s.phone ==9765432876).ToList();
 			Console.WriteLine(" Id\t name\t phone \t email\t  city");
@@ -287,9 +287,9 @@ namespace SuperMarketApp
 			}
 
 
-			Console.WriteLine("Based on phone number \n");
+			Console.WriteLine("\nBased on Email Id \n");
 
-			var supplierEmailfilter = context.Supplier.Where(s => s.email == "jagdish@gmail.com").ToList();
+			var supplierEmailfilter = context.Supplier.Where(s => s.email.Contains("jagdish@gmail.com")).ToList();
 			Console.WriteLine(" Id\t name\t phone \t email\t  city");
 			foreach (var v in supplierEmailfilter)
 			{
@@ -298,9 +298,9 @@ namespace SuperMarketApp
 			}
 
 
-			Console.WriteLine("Based on city/state \n");
+			Console.WriteLine("\nBased on city/state \n");
 
-			var supplierCityfilter = context.Supplier.Where(s => s.city == "Gurgaon").ToList();
+			var supplierCityfilter = context.Supplier.Where(s => s.city.Contains("Gurgaon")).ToList();
 			Console.WriteLine(" Id\t name\t phone \t email\t  city");
 			foreach (var v in supplierCityfilter)
 			{
@@ -330,7 +330,7 @@ namespace SuperMarketApp
 			//}
 
 
-			Console.WriteLine("filter1 based on Product name");
+			Console.WriteLine("\nfilter1 based on Product name");
 			var filter2 = from p in context.Product
 						  join e in context.PurchaseOrder
 						  on p.ProductId equals e.ProductId
@@ -379,7 +379,7 @@ namespace SuperMarketApp
 			}
 
 
-			Console.WriteLine("filter1 based on category Code");
+			Console.WriteLine("\nfilter1 based on category Code");
 			var filter4 = from p in context.Product
 						  join c in context.Category
 						  on p.ProductId equals c.CategoryId
@@ -405,7 +405,7 @@ namespace SuperMarketApp
 			}
 
 
-			Console.WriteLine("supplied after a particular date ");
+			Console.WriteLine("\nsupplied after a particular date ");
 			DateTime date = new DateTime(2021, 05, 11);
 			var filter5 = from p in context.Product
 						  join c in context.Category
@@ -434,7 +434,7 @@ namespace SuperMarketApp
 
 
 
-			Console.WriteLine("Product has inventory more than or less than a given qty");
+			Console.WriteLine("\nProduct has inventory more than or less than a given qty");
 			
 			var filter6 = from p in context.Product
 						  join c in context.Category
